@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Layout from './Layout/Layout';
 import {Route, Switch, Redirect, withRouter} from 'react-router-dom';
 import DishesList from './Containers/DishesList/DishesList'
-import DishCreator from './Containers/QuizCreator/DishCreator';
+import DishCreator from './Containers/DishCreator/DishCreator';
 import Auth from './Containers/Auth/Auth';
 import { connect } from 'react-redux';
 import Logout from './Components/Logout/Logout'
