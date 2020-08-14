@@ -1,3 +1,10 @@
+[Test assigment for gotovo](https://elastic-austin-5a6b8b.netlify.app/)
+
+log: w1@mail.ru
+
+pas: 222222
+
+-----------------------------------
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
