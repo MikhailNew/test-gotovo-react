@@ -1,0 +1,89 @@
+.DishesList {
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    flex-grow: 1;
+    width: 100%;
+    background: #fff;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+.dish {
+    min-height: 100px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-family: Walsheim;
+}
+
+.dish__description {
+    margin-left: 10px;
+    width: calc(100% - 130px);
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.dish__description-top {
+    margin-bottom: 20px;
+    text-align: left;
+    display: flex;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.dish__description-top h3 {
+    font-size: 20px;
+    line-height: 20px;
+    color: rgb(18, 18, 18);
+    font-family: Walsheim;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 0px;
+}
+
+.dish__description-top h3 small {
+    font-size: 13px;
+    line-height: 15px;
+    color: rgb(204, 204, 210);
+    white-space: nowrap;
+    font-weight: normal;
+    margin: 0px 0px 0px 4px;
+}
+
+.dish__description-btn {
+    font-family: Walsheim;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 16px;
+    color: rgb(18, 18, 18);
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    min-width: 86px;
+    background: transparent;
+    border-radius: 50px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(18, 18, 18);
+    border-image: initial;
+    padding: 10px 15px;
+    outline: none;
+}
+
+.dish__picture {
+    width: 180px;
+    height: 180px;
+}
