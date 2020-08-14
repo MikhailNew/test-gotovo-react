@@ -8,20 +8,10 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 
-function validatePhone (phoneNumber) {
-    const re = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){11}(\s*)?$/;
-    return re.test(String(phoneNumber).toLowerCase());
+function validateEmail (email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
 }
-
-var firebaseConfig = {
-    apiKey: "AIzaSyDhzobILNikqMFFaW4RMERuSBEKsbWbOQ4",
-    authDomain: "gotovo-db.firebaseapp.com",
-    databaseURL: "https://gotovo-db.firebaseio.com",
-    projectId: "gotovo-db",
-    storageBucket: "gotovo-db.appspot.com"
-};
-  
-firebase.initializeApp(firebaseConfig, console.log('OK'));
 
 class Auth extends Component {
 
@@ -29,16 +19,16 @@ class Auth extends Component {
         isFormValid: false,
         isValid: true,
         formControls: {
-            phone: {
+            email: {
                 value: '',
-                type: 'phone',
-                label: 'Номер телефона',
-                errorMessage: 'Введите корректно номер телефона',
+                type: 'email',
+                label: 'Электронная почта',
+                errorMessage: 'Введите корректно электронную почту',
                 valid: false,
                 touched: false,
                 validation: {
                     required: true,
-                    phone: true
+                    email: true
                 }
             },
             password: {
@@ -56,32 +46,17 @@ class Auth extends Component {
         }
     }
 
-    componentDidMount () {
-        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
-    }
-
     logHandler = () => {
-        var phoneNumber = this.state.formControls.phone.value;
-        var appVerifier = window.recaptchaVerifier;
-        firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
-            .then(function (confirmationResult) {
-            // SMS sent. Prompt user to type the code from the message, then sign the
-            // user in with confirmationResult.confirm(code).
-            window.confirmationResult = confirmationResult;
-            }).catch(function (error) {
-            // Error; SMS not sent
-            // ...
-        });
-        // this.props.auth(
-        //     this.state.formControls.phone.value,
-        //     this.state.formControls.password.value,
-        //     true
-        // )
+        this.props.auth(
+            this.state.formControls.email.value,
+            this.state.formControls.password.value,
+            true
+        )
     }
 
     registerHandler = () => {
         this.props.auth(
-            this.state.formControls.phone.value,
+            this.state.formControls.email.value,
             this.state.formControls.password.value,
             false
         )
@@ -103,7 +78,7 @@ class Auth extends Component {
         }
 
         if (validation.phone) {
-            isValid = validatePhone(value) && isValid
+            isValid = validateEmail(value) && isValid
         }
 
         if (validation.minLength) {
@@ -159,7 +134,7 @@ class Auth extends Component {
                     <form className = "AuthForm" onSubmit={this.submitHandler}>
                         {this.renderInputs()}
                         <Button onClick={this.logHandler} type="success" disabled={!this.state.isFormValid}>Войти</Button>
-                        {/* <Button onClick={this.registerHandler} type="primary" disabled={!this.state.isFormValid}>Зарегистрироваться</Button> */}
+                        <Button onClick={this.registerHandler} type="primary" disabled={!this.state.isFormValid}>Зарегистрироваться</Button>
                     </form>
                     <div id="recaptcha-container"></div>
                 </div>
@@ -171,7 +146,7 @@ class Auth extends Component {
 
 function mapDispatchToProps (dispatch) {
     return {
-        auth: (phone, password, isLogin) => dispatch(auth(phone, password, isLogin))
+        auth: (email, password, isLogin) => dispatch(auth(email, password, isLogin))
     }
 }
 

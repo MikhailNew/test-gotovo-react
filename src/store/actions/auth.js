@@ -1,24 +1,24 @@
 import Axios from 'axios'
 import {AUTH_SUCCESS, AUTH_LOGOUT} from './actionsType'
 
-export function auth (phone, password, isLogin) {
+export function auth (email, password, isLogin) {
     return async dispatch => {
         const authData = { 
-            phone: phone, password, returnSecureToken: true
+            email, password, returnSecureToken: true
         }
-        // let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyDhzobILNikqMFFaW4RMERuSBEKsbWbOQ4'
+        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyDhzobILNikqMFFaW4RMERuSBEKsbWbOQ4'
 
-        // if (isLogin) { 
-        //     url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDhzobILNikqMFFaW4RMERuSBEKsbWbOQ4'
-        // }
-        // const response = await Axios.post(url, authData)   
-        // const data = response.data
-        // const expirationDate = new Date(new Date().getTime() + data.expiresIn * 1000)
-        // localStorage.setItem('token', data.idToken)
-        // localStorage.setItem('userId', data.localId)
-        // localStorage.setItem('expirationDate', expirationDate)
-        // dispatch(authSuccess(data.idToken))
-        // dispatch(autoLogout(data.expiresIn)) 
+        if (isLogin) { 
+            url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDhzobILNikqMFFaW4RMERuSBEKsbWbOQ4'
+        }
+        const response = await Axios.post(url, authData)   
+        const data = response.data
+        const expirationDate = new Date(new Date().getTime() + data.expiresIn * 1000)
+        localStorage.setItem('token', data.idToken)
+        localStorage.setItem('userId', data.localId)
+        localStorage.setItem('expirationDate', expirationDate)
+        dispatch(authSuccess(data.idToken))
+        dispatch(autoLogout(data.expiresIn)) 
         
     }
 }
