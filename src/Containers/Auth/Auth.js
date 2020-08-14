@@ -4,9 +4,6 @@ import Button from '../../Components/UI/Button/Button';
 import Input from '../../Components/UI/Input/Input';
 import { connect } from 'react-redux';
 import {auth} from '../../store/actions/auth'
-import * as firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/firestore";
 
 function validateEmail (email) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
