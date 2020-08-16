@@ -1,6 +1,6 @@
 import React from 'react';
 import './Input.css';
-import { Widget } from "@uploadcare/react-widget";
+// import { Widget } from "@uploadcare/react-widget";
 
 function isInvalid({valid, touched, shouldValidate}) {
     return !valid && shouldValidate && touched
@@ -17,7 +17,11 @@ const Input = props => {
 
     return (
         <div className = {cls.join(' ')}>
-            <label htmlFor={htmlFor}>{props.label}</label>
+            {
+                inputType === 'file'
+                ? <label htmlFor={htmlFor}>Добавьте любое фото для валидации. Тут будет аплоадкейр</label>
+                : <label htmlFor={htmlFor}>{props.label}</label>
+            }
             {/* {
                 inputType === 'file'
                 ? <>

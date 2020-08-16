@@ -24,14 +24,25 @@
 }
 
 .AuthForm {
-    background: #eee;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
     padding: 15px;
     border-radius: 5px;
+    text-align: center;
 }
 
-#cont {
-    width: 100px;
-    height: 100px;
-    background: red;
+.input-auth {
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid rgb(107, 32, 76);
+    background: rgb(202, 181, 193);
+    border-radius: 50px;
+    padding: 7px;
+    margin: 5px 0 5px;
+    width: 60%;
+    outline: none;
+    transition: all 300ms ease-in-out;
+}
+
+.error-auth {
+    color: red;
+    font-size: 18px;
 }

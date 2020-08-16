@@ -99,7 +99,6 @@ class DishCreator extends Component {
                         errorMessage={control.errorMessage}
                         onChange={event => this.changeHandler(event.target.value, controlName)} 
                     />
-                    {index === 0 ? <hr /> : null}
                 </>
             )
         })
