@@ -1,4 +1,4 @@
-[Test assigment for gotovo](https://elastic-austin-5a6b8b.netlify.app/)
+[Test assigment for gotovo](https://trusting-snyder-41b6e8.netlify.app/)
 
 log: w1@mail.ru
 
